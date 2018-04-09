@@ -1,0 +1,42 @@
+{
+  "name": "yuncms/message",
+  "description": "The message module for yuncms.",
+  "keywords": [
+    "yii",
+    "yii2-payment",
+    "payment"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "require": {
+    "yuncms/framework": "~1.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "yuncms\\message\\": "src"
+    }
+  },
+  "extra": {
+    "yuncms": {
+      "id": "message",
+      "translate": {
+        "class": "yii\\i18n\\PhpMessageSource",
+        "sourceLanguage": "en-US",
+        "basePath": "@yuncms/message/messages"
+      },
+      "migrationNamespace": "yuncms\\message\\migrations",
+      "frontend": {
+        "class": "yuncms\\message\\frontend\\Module"
+      }
+    },
+    "branch-alias": {
+      "dev-master": "2.0.0-dev"
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ]
+}
