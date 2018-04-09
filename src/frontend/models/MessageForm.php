@@ -44,7 +44,7 @@ class MessageForm extends Model
     public function attributeLabels()
     {
         return [
-            'message' => Yii::t('message', 'Message'),
+            'message' => Yii::t('yuncms/message', 'Message'),
         ];
     }
 

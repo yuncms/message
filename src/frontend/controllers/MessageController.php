@@ -8,11 +8,11 @@
 namespace yuncms\message\frontend\controllers;
 
 use Yii;
-use yii\web\Response;
-use yii\web\Controller;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
+use yuncms\web\Response;
+use yuncms\web\Controller;
 use yuncms\message\models\Message;
 use yuncms\message\frontend\models\MessageForm;
 use yuncms\message\frontend\models\MessageSendForm;
@@ -30,7 +30,7 @@ class MessageController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow' => true,
@@ -106,7 +106,7 @@ class MessageController extends Controller
     /**
      * 未读通知数目
      * @return array
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function actionUnreadMessages()
     {
@@ -135,7 +135,7 @@ class MessageController extends Controller
         ) {
             return $model;
         } else {
-            throw new NotFoundHttpException (Yii::t('message', 'The requested page does not exist.'));
+            throw new NotFoundHttpException (Yii::t('yuncms/message', 'The requested page does not exist.'));
         }
     }
 }

@@ -53,9 +53,9 @@ class MessageSendForm extends Model
     public function attributeLabels()
     {
         return [
-            'user_id' => Yii::t('message', 'User ID'),
-            'nickname' => Yii::t('message', 'Nickname'),
-            'message' => Yii::t('message', 'Message Body'),
+            'user_id' => Yii::t('yuncms/message', 'User ID'),
+            'nickname' => Yii::t('yuncms/message', 'Nickname'),
+            'message' => Yii::t('yuncms/message', 'Message Body'),
         ];
     }
 
@@ -68,7 +68,7 @@ class MessageSendForm extends Model
     {
         if (!$this->hasErrors()) {
             if (!$this->_user) {
-                $this->addError($attribute, Yii::t('message', 'You enter the user name does not exist oh！'));
+                $this->addError($attribute, Yii::t('yuncms/message', 'You enter the user name does not exist oh！'));
             }
         }
     }

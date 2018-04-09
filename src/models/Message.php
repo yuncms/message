@@ -8,8 +8,9 @@
 namespace yuncms\message\models;
 
 use Yii;
-use yii\db\ActiveRecord;
+use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
+use yuncms\db\ActiveRecord;
 use yuncms\user\models\User;
 
 /**
@@ -48,10 +49,10 @@ class Message extends ActiveRecord
     {
         return [
             'timestamp' => [
-                'class' => 'yii\behaviors\TimestampBehavior'
+                'class' => TimestampBehavior::class
             ],
             'blameable' => [
-                'class' => 'yii\behaviors\BlameableBehavior',
+                'class' => BlameableBehavior::class,
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => 'from_id',
                 ],
@@ -68,10 +69,10 @@ class Message extends ActiveRecord
             [['user_id', 'message'], 'required'],
             [['user_id', 'status'], 'integer'],
             [['message'], 'string', 'max' => 750],
-            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => static::className(), 'targetAttribute' => ['parent' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => static::class, 'targetAttribute' => ['parent' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
             [['status'], 'default', 'value' => static::STATUS_NEW],
-            ['status', 'in', 'range' => [static::STATUS_NEW, static::STATUS_READ], 'message' => Yii::t('message', 'Incorrect status')],
+            ['status', 'in', 'range' => [static::STATUS_NEW, static::STATUS_READ], 'message' => Yii::t('yuncms/message', 'Incorrect status')],
         ];
     }
 
@@ -91,7 +92,7 @@ class Message extends ActiveRecord
      */
     public function getParent()
     {
-        return $this->hasOne(static::className(), ['id' => 'parent']);
+        return $this->hasOne(static::class, ['id' => 'parent']);
     }
 
     /**
@@ -99,7 +100,7 @@ class Message extends ActiveRecord
      */
     public function getFrom()
     {
-        return $this->hasOne(User::className(), ['id' => 'from_id']);
+        return $this->hasOne(User::class, ['id' => 'from_id']);
     }
 
     /**
@@ -107,7 +108,7 @@ class Message extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     /**
@@ -135,7 +136,7 @@ class Message extends ActiveRecord
      */
     public function getMessages()
     {
-        return $this->hasMany(static::className(), ['parent' => 'id']);
+        return $this->hasMany(static::class, ['parent' => 'id']);
     }
 
     /**

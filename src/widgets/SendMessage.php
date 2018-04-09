@@ -20,7 +20,9 @@ class SendMessage extends Widget
      */
     public $nickname;
 
-    /** @inheritdoc */
+    /** @inheritdoc
+     * @throws InvalidConfigException
+     */
     public function init()
     {
         parent::init();

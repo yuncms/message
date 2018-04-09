@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 <?= $form->field($model, 'nickname')->label(false)->hiddenInput(); ?>
 <?= $form->field($model, 'message')->label(false)->textarea(['class' => 'form-control']) ?>
 
-<?= Html::submitButton(Yii::t('message', 'Send'), ['class' => 'btn btn-primary']) ?>
+<?= Html::submitButton(Yii::t('yuncms/message', 'Send'), ['class' => 'btn btn-primary']) ?>
 
 <?php ActiveForm::end(); ?>
 
