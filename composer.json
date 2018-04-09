@@ -17,18 +17,7 @@
     }
   },
   "extra": {
-    "yuncms": {
-      "id": "message",
-      "translate": {
-        "class": "yii\\i18n\\PhpMessageSource",
-        "sourceLanguage": "en-US",
-        "basePath": "@yuncms/message/messages"
-      },
-      "migrationNamespace": "yuncms\\message\\migrations",
-      "frontend": {
-        "class": "yuncms\\message\\frontend\\Module"
-      }
-    },
+    "yuncms": "mainfest.php",
     "branch-alias": {
       "dev-master": "2.0.0-dev"
     }
