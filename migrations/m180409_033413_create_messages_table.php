@@ -23,7 +23,7 @@ class m180409_033413_create_messages_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
         $this->createTable($this->tableName, [
-            'id' => $this->primaryKey()->unsigned()->comment('Id'),
+            'id' => $this->primaryKey()->comment('Id'),
             'from_id' => $this->unsignedInteger()->notNull()->comment('Form Id'),
             'user_id' => $this->unsignedInteger()->notNull()->comment('User Id'),
             'parent' => $this->unsignedInteger()->comment('parent'),
